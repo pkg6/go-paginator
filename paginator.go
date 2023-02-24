@@ -68,12 +68,12 @@ func (p Paginator) Clear() {
 
 }
 func SimplePaginator(adapter IAdapter, listRows, currentPage int64) IPaginator {
-	return Make(adapter, DefaultOptions(), listRows, currentPage, 0, true)
+	return Make(adapter, listRows, currentPage, 0, true, DefaultOptions())
 }
 func TotalPaginator(adapter IAdapter, listRows, currentPage, total int64) IPaginator {
-	return Make(adapter, DefaultOptions(), listRows, currentPage, total, false)
+	return Make(adapter, listRows, currentPage, total, false, DefaultOptions())
 }
-func Make(adapter IAdapter, options Options, listRows int64, currentPage int64, total int64, simple bool) IPaginator {
+func Make(adapter IAdapter, listRows int64, currentPage int64, total int64, simple bool, options Options) IPaginator {
 	p := &Paginator{}
 	p.Clear()
 	p.Simple = simple
